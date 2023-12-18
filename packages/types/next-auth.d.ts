@@ -1,5 +1,5 @@
 import type { User as PrismaUser, UserPermissionRole } from "@prisma/client";
-import type { DefaultUser } from "next-auth";
+import type { DefaultUser, Profile as DefaultProfile } from "next-auth";
 
 declare module "next-auth" {
   /**
@@ -8,6 +8,10 @@ declare module "next-auth" {
   interface Session {
     hasValidLicense: boolean;
     user: User;
+  }
+
+  interface Profile extends DefaultProfile {
+    picture?: string;
   }
 
   interface User extends Omit<DefaultUser, "id"> {

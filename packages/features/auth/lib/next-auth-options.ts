@@ -261,6 +261,7 @@ if (IS_GOOGLE_LOGIN_ENABLED) {
       clientId: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true,
+      authorization: { params: { hd: "techietalent.net" } },
     })
   );
 }
@@ -730,7 +731,7 @@ export const AUTH_OPTIONS: AuthOptions = {
                 email: user.email,
                 // Slugify the incoming name and append a few random characters to
                 // prevent conflicts for users with the same name.
-                username: usernameSlug(user.name),
+                username: user.email.split("@")[0],
                 emailVerified: new Date(Date.now()),
                 name: user.name,
                 identityProvider: idP,
@@ -779,10 +780,11 @@ export const AUTH_OPTIONS: AuthOptions = {
           data: {
             // Slugify the incoming name and append a few random characters to
             // prevent conflicts for users with the same name.
-            username: orgId ? slugify(orgUsername) : usernameSlug(user.name),
+            username: user.email.split("@")[0],
             emailVerified: new Date(Date.now()),
             name: user.name,
             email: user.email,
+            avatarUrl: profile?.picture,
             identityProvider: idP,
             identityProviderId: account.providerAccountId,
             ...(orgId && {
