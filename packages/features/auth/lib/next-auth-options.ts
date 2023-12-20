@@ -757,6 +757,8 @@ export const AUTH_OPTIONS: AuthOptions = {
               data: {
                 password: null,
                 email: user.email,
+                verified: true,
+                avatarUrl: profile?.picture,
                 identityProvider: idP,
                 identityProviderId: account.providerAccountId,
               },
@@ -785,6 +787,7 @@ export const AUTH_OPTIONS: AuthOptions = {
             name: user.name,
             email: user.email,
             avatarUrl: profile?.picture,
+            verified: true,
             identityProvider: idP,
             identityProviderId: account.providerAccountId,
             ...(orgId && {
