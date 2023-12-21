@@ -47,13 +47,14 @@ async function getIdentityData(req: NextApiRequest) {
         username,
         organization: orgQuery,
       },
-      select: { avatar: true, email: true },
+      select: { avatar: true, avatarUrl: true, email: true },
     });
 
     return {
       name: username,
       email: user?.email,
       avatar: user?.avatar,
+      avatarUrl: user?.avatarUrl,
       org,
     };
   }
@@ -72,6 +73,7 @@ async function getIdentityData(req: NextApiRequest) {
       name: teamname,
       email: null,
       avatar: getPlaceholderAvatar(team?.logo, teamname),
+      avatarUrl: null,
     };
   }
 
@@ -111,7 +113,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.setHeader("x-cal-org", identity.org);
     }
     res.writeHead(302, {
-      Location: AVATAR_FALLBACK,
+      Location: identity?.avatarUrl ?? AVATAR_FALLBACK,
     });
 
     return res.end();
