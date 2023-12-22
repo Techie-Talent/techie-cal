@@ -18,13 +18,17 @@ const PoweredByCal = ({ logoOnly }: { logoOnly?: boolean }) => {
         {APP_NAME === "Cal.com" || !hasValidLicense ? (
           <>
             <img
-              className="relative -mt-px inline h-[10px] w-auto dark:invert"
-              src="/api/logo"
-              alt="Cal.com Logo"
+              className="relative -mt-px inline h-[10px] w-auto"
+              src="/techie-talent-logo.svg"
+              alt="Techie Talent"
             />
           </>
         ) : (
-          <span className="text-emphasis font-semibold opacity-50 hover:opacity-100">{APP_NAME}</span>
+          <img
+            className="relative -mt-px inline h-[10px] w-auto"
+            src="/techie-talent-logo.svg"
+            alt="Techie Talent"
+          />
         )}
       </Link>
     </div>

@@ -19,12 +19,7 @@ export default function Logo({
         {icon ? (
           <img className="mx-auto w-9 dark:invert" alt="Cal" title="Cal" src={`${src}?type=icon`} />
         ) : (
-          <img
-            className={classNames(small ? "h-6 w-auto" : "h-5 w-auto", "dark:invert")}
-            alt="Cal"
-            title="Cal"
-            src={src}
-          />
+          <img className={classNames(small ? "h-6 w-auto" : "h-5 w-auto")} alt="Cal" title="Cal" src={src} />
         )}
       </strong>
     </h3>
